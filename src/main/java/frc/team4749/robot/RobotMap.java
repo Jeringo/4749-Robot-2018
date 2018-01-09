@@ -1,4 +1,4 @@
-package org.usfirst.frc.team4749.robot;
+package frc.team4749.robot;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -6,7 +6,7 @@ package org.usfirst.frc.team4749.robot;
  * the wiring easier and significantly reduces the number of magic numbers
  * floating around.
  */
-public class RobotMap {
+public interface RobotMap {
 
     // CanTalonSRX
 

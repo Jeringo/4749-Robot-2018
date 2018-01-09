@@ -1,4 +1,4 @@
-package org.usfirst.frc.team4749.robot.commands.brake;
+package frc.team4749.robot.commands.brake;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.team4749.robot.Robot;
