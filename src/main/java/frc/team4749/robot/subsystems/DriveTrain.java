@@ -7,7 +7,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import com.ctre.CANTalon;
-import com.ctre.CANTalon.TalonControlMode;
 import frc.team4749.robot.OI;
 import frc.team4749.robot.RobotMap;
 import frc.team4749.robot.commands.drive.ManualDrive;
