@@ -32,7 +32,7 @@ public class DriveTrain extends Subsystem implements RobotMap {
 
         robotDrive = new MecanumDrive(frontLeft, backLeft, frontRight, backRight);
 
-        frontLeft.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder2);
+        frontLeft.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
         frontRight.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
         frontLeft.configEncoderCodesPerRev(DT_LEFT_ENC_COUNT_COMP);
         frontRight.configEncoderCodesPerRev(DT_RIGHT_ENC_COUNT_COMP);
