@@ -1,12 +1,12 @@
 package frc.team4749.robot.subsystems;
 
+import com.ctre.phoenix.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import com.ctre.CANTalon;
-import com.ctre.CANTalon.TalonControlMode;
 import frc.team4749.robot.OI;
 import frc.team4749.robot.RobotMap;
 import frc.team4749.robot.commands.drive.ManualDrive;
@@ -15,7 +15,7 @@ public class DriveTrain extends Subsystem implements RobotMap {
 
     public static DriveTrain instance;
     private CANTalon frontLeft, frontRight, backLeft, backRight;
-    private RobotDrive robotDrive;
+    private MecanumDrive robotDrive;
 
     public static DriveTrain getInstance(){
         if (instance == null){
@@ -30,7 +30,7 @@ public class DriveTrain extends Subsystem implements RobotMap {
         frontRight = new CANTalon(DT_FRONTRIGHT);
         backRight = new CANTalon(DT_BACKRIGHT);
 
-        robotDrive = new RobotDrive(frontLeft, backLeft, frontRight, backRight);
+        robotDrive = new MecanumDrive(frontLeft, backLeft, frontRight, backRight);
 
         frontLeft.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
         frontRight.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
