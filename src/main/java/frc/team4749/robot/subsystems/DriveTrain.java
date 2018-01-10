@@ -1,21 +1,17 @@
 package frc.team4749.robot.subsystems;
 
-import com.ctre.phoenix.drive.MecanumDrive;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.Timer;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import com.ctre.CANTalon;
+import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import frc.team4749.robot.OI;
 import frc.team4749.robot.RobotMap;
 import frc.team4749.robot.commands.drive.ManualDrive;
 
 public class DriveTrain extends Subsystem implements RobotMap {
 
-    public static DriveTrain instance;
-    private TalonSRX frontLeft, frontRight, backLeft, backRight;
+    private static DriveTrain instance;
+    private WPI_TalonSRX frontLeft, frontRight, backLeft, backRight;
     private MecanumDrive robotDrive;
 
     public static DriveTrain getInstance(){
@@ -26,10 +22,10 @@ public class DriveTrain extends Subsystem implements RobotMap {
     }
 
     private DriveTrain(){
-        frontLeft  = new TalonSRX(DT_FRONTLEFT);
-        backLeft = new TalonSRX(DT_BACKLEFT);
-        frontRight = new TalonSRX(DT_FRONTRIGHT);
-        backRight = new TalonSRX(DT_BACKRIGHT);
+        frontLeft  = new WPI_TalonSRX(DT_FRONTLEFT);
+        backLeft = new WPI_TalonSRX(DT_BACKLEFT);
+        frontRight = new WPI_TalonSRX(DT_FRONTRIGHT);
+        backRight = new WPI_TalonSRX(DT_BACKRIGHT);
 
         robotDrive = new MecanumDrive(frontLeft, backLeft, frontRight, backRight);
         setManual();
@@ -48,12 +44,12 @@ public class DriveTrain extends Subsystem implements RobotMap {
 
     // Basic Teleop Functions
     public void manualDrive(){
-        robotDrive.MecanumDrive_Cartesian(OI.getInstance().getStick().getCubeX(), OI.getInstance().getStick().getCubeY(), OI.getInstance().getStick2().getCubeX(), 0);
+        robotDrive.driveCartesian(OI.getInstance().getStick().getCubeX(), OI.getInstance().getStick().getCubeY(), OI.getInstance().getStick2().getCubeX(), 0.0);
     }
 
     // Support functions
     public void stop() { // this stops the robot from moving
-        robotDrive.drive(0,0);
+        robotDrive.driveCartesian(0.0, 0.0, 0.0, 0.0);
     }
 
     public void resetPos() {

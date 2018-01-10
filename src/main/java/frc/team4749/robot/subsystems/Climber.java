@@ -1,14 +1,14 @@
 package frc.team4749.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.team4749.robot.RobotMap;
 
-import com.ctre.CANTalon;
 
 public class Climber extends Subsystem implements RobotMap {
 
     private static Climber instance;
-    private CANTalon climber;
+    private WPI_TalonSRX climber;
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -22,7 +22,7 @@ public class Climber extends Subsystem implements RobotMap {
     }
     private Climber()
     {
-        climber = new CANTalon(CLIMBER);
+        climber = new WPI_TalonSRX(CLIMBER);
     }
 
     public void climb(){
