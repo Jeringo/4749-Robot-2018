@@ -2,19 +2,24 @@ package frc.team4749.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import frc.team4749.robot.subsystems.Climber;
-import frc.team4749.robot.subsystems.DriveTrain;
+import frc.team4749.robot.subsystems.*;
 
 public class Robot extends IterativeRobot {
 
 
     public static OI oi;
     public static Climber climber;
+    public static Grabber grabber;
+    public static Elevator elevator;
+    public static Ejector ejector;
     public static DriveTrain dt;
 
     @Override
     public void robotInit() { // runs once before robotPeriodic when the robot is turned on
         climber = Climber.getInstance();
+        grabber = Grabber.getInstance();
+        elevator = Elevator.getInstance();
+        ejector = Ejector.getInstance();
         dt = DriveTrain.getInstance();
 
         oi = OI.getInstance();
@@ -54,7 +59,8 @@ public class Robot extends IterativeRobot {
     }
 
     @Override
-    public void teleopInit() { // runs once before teleopPeriodic after teleop mode is started
+    public void teleopInit() {
+        // runs once before teleopPeriodic after teleop mode is started
         // This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to
         // continue until interrupted by another command, remove

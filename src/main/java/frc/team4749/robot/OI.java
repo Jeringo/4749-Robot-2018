@@ -1,17 +1,17 @@
 package frc.team4749.robot;
 
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.team4749.robot.commands.brake.Brake;
+import frc.team4749.robot.commands.elevator.Grab;
+import frc.team4749.robot.commands.elevator.Eject;
+import frc.team4749.robot.commands.elevator.Release;
+import frc.team4749.robot.commands.drive.Brake;
 import frc.team4749.robot.commands.climb.Climb;
 
 public class OI implements RobotMap {
 
     public static OI instance;
-    BetterJoystick driveStick, driveStick2, controlStick;
-    //Buttons for Drive joystick
-    JoystickButton brake;
-    //Buttons for Control joystick
-    JoystickButton climb;
+    private Controller mainController;
+    private JoystickButton brake, climb, grab, release, eject;
 
     public static OI getInstance()
     {
@@ -22,40 +22,32 @@ public class OI implements RobotMap {
     }
 
     private OI(){
-        driveStick = new BetterJoystick(0);
-        driveStick = new BetterJoystick(1);
-        controlStick = new BetterJoystick(2);
+        mainController = new Controller(MAIN_CONTROLLER);
 
         createButtons();
     }
 
-    public void createButtons(){
-        //Create Buttons for main joystick
-        brake = new JoystickButton(driveStick,1);
-        //Create Buttons for shooting joystick
-        climb = new JoystickButton(controlStick,2);
-
+    private void createButtons(){
+        //Create Buttons for main controller
+        brake = new JoystickButton(mainController,BRAKE_BUTTON);
+        climb = new JoystickButton(mainController,CLIMB_BUTTON);
+        grab = new JoystickButton(mainController,GRAB_BUTTON);
+        release = new JoystickButton(mainController,RELEASE_BUTTON);
+        eject = new JoystickButton(mainController,EJECT_BUTTON);
 
         assignButtons();
     }
 
-    public void assignButtons(){
-        //Assign commands to main joystick buttons
+    private void assignButtons(){
+        //Assign commands to main controller buttons
         brake.whileHeld(new Brake());
-
-        //Assign commands to shooting joystick buttons
-        climb.whenPressed(new Climb());
+        climb.whileHeld(new Climb());
+        grab.whileHeld(new Grab());
+        release.whileHeld(new Release());
+        eject.whileHeld(new Eject());
 
     }
-    public BetterJoystick getStick(){
-        return driveStick;
-    }
-
-    public BetterJoystick getStick2(){
-        return driveStick2;
-    }
-
-    public BetterJoystick getControlStick(){
-        return controlStick;
+    public Controller getController(){
+        return mainController;
     }
 }

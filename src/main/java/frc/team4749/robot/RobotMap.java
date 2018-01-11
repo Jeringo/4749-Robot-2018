@@ -8,39 +8,41 @@ package frc.team4749.robot;
  */
 public interface RobotMap {
 
-    // CanTalonSRX
+    //Driver Station
+    int MAIN_CONTROLLER = 1;
 
-    public static final int DT_FRONTLEFT = 3;
-    public static final int DT_FRONTRIGHT = 4;
-    public static final int DT_BACKLEFT = 5;
-    public static final int DT_BACKRIGHT = 6;
-    public static final int CLIMBER = 10;
+    //Controller Buttons
+    int BRAKE_BUTTON = 2;
+    int CLIMB_BUTTON = 4;
+    int GRAB_BUTTON = 6;
+    int RELEASE_BUTTON = 5;
+    int EJECT_BUTTON = 1;
+
+    //CanTalonSRX
+    int DT_FRONTLEFT = 3;
+    int DT_FRONTRIGHT = 4;
+    int DT_BACKLEFT = 5;
+    int DT_BACKRIGHT = 6;
+    int CLIMBER = 10;
+    int ELEVATOR = 11;
+    int GRABBER = 12;
+    int EJECTOR = 13;
 
     //Scales down Climber speed
-    public static final double CLIMBER_SPEED = 1.0;
+    double CLIMBER_SPEED = 1.0;
 
-    /*
-     * Driving Constants
-     */
-    //Scales down DT speed
-    public static final double DT_SCALE = 2.0;
-    //Radius of Wheel
-    public static final double DT_WHEEL_RAD_IN = 2;
-    public static final double DT_WHEEL_RAD_FT = DT_WHEEL_RAD_IN/12;
-    //Diameter of Wheel
-    public static final double DT_WHEEL_DIA_IN = 2*DT_WHEEL_RAD_IN;
-    public static final double DT_WHEEL_DIA_FT = 2*DT_WHEEL_RAD_FT;
-    //Circumference of Wheel
-    public static final double DT_WHEEL_CIRC_IN = DT_WHEEL_DIA_IN*Math.PI;
-    public static final double DT_WHEEL_CIRC_FT = DT_WHEEL_DIA_FT*Math.PI;
-    //Turning Circle constants
-    public static final double DT_TURN_DIA_FT = 2;
-    public static final double DT_TURN_CIRC_FT = 2*Math.PI;
-    //Encoder Ticks Per Revolution
-    //****PRACTICE****
-    public static final int DT_LEFT_ENC_COUNT_PRACTICE = 256;
-    public static final int DT_RIGHT_ENC_COUNT_PRACTICE = 360;
-    //****COMPETITION
-    public static final int DT_LEFT_ENC_COUNT_COMP = 360;
-    public static final int DT_RIGHT_ENC_COUNT_COMP = 360;
+    //Controls the elevator speeds
+    double ELEVATOR_SPEED = 1.0;
+    double LOWER_MODIFIER = 0.5;
+    double AUTO_RAISE_SPEED = 0.8;
+    double AUTO_LOWER_SPEED = -0.2;
+
+    //Controls the Grabber speeds
+    double GRABBER_SPEED = 1.0;
+    double RELEASE_MODIFIER = -1.0;
+
+    //Controls the Ejector speeds
+    double EJECTOR_SPEED = 1.0;
+    double RESET_MODIFIER = -1.0;
+
 }
