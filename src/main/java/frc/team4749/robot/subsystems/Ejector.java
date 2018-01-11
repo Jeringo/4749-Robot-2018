@@ -4,34 +4,38 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.team4749.robot.RobotMap;
 
+public class Ejector extends Subsystem implements RobotMap {
 
-public class Climber extends Subsystem implements RobotMap {
-
-    private static Climber instance;
-    private WPI_TalonSRX climber;
+    private static Ejector instance;
+    private WPI_TalonSRX pusher;
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-    public static Climber getInstance()
+    public static Ejector getInstance()
     {
         if (instance == null)
         {
-            instance = new Climber();
+            instance = new Ejector();
         }
         return instance;
     }
-    private Climber()
+    private Ejector()
     {
-        climber = new WPI_TalonSRX(CLIMBER);
-        // TODO - make this motor controller brake instead of coast
+        pusher = new WPI_TalonSRX(EJECTOR);
+
+        // TODO - make this motor controller coast instead of brake
     }
 
-    public void climb(){
-        climber.set(CLIMBER_SPEED);
+    public void eject(){
+        pusher.set(EJECTOR_SPEED);
+    }
+
+    public void reset(){
+        pusher.set(EJECTOR_SPEED * RESET_MODIFIER);
     }
 
     public void stop(){
-        climber.set(0);
+        pusher.set(0);
     }
 
     public void initDefaultCommand() {

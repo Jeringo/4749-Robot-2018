@@ -1,4 +1,4 @@
-package frc.team4749.robot.commands.brake;
+package frc.team4749.robot.commands.drive;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.team4749.robot.Robot;
@@ -10,12 +10,14 @@ public class Brake extends Command {
     }
 
     protected void initialize(){
-        Robot.dt.stop();
+        // TODO - Hook up these commands
+    }
+
+    protected void end(){
     }
 
     @Override
     protected boolean isFinished() {
-        // TODO Auto-generated method stub
         return true;
     }
 

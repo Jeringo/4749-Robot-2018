@@ -1,27 +1,25 @@
-package frc.team4749.robot.commands.climb;
+package frc.team4749.robot.commands.elevator;
 
 import edu.wpi.first.wpilibj.command.Command;
-
 import frc.team4749.robot.Robot;
 
-public class Climb extends Command {
+public class Grab extends Command {
 
-    public Climb(){
-        requires(Robot.climber);
+    public Grab(){
+        requires(Robot.grabber);
     }
 
     protected void initialize(){
-        Robot.climber.climb();
+        Robot.grabber.grab();
     }
 
     protected void end(){
-        Robot.climber.stop();
+        Robot.grabber.stop();
     }
 
     @Override
     protected boolean isFinished() {
         return false;
     }
-
 
 }
