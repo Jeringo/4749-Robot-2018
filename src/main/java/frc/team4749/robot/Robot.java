@@ -7,11 +7,11 @@ import frc.team4749.robot.subsystems.*;
 
 public class Robot extends IterativeRobot {
 
-    public static Climber climber;
-    public static Grabber grabber;
-    public static Elevator elevator;
-    public static Ejector ejector;
-    public static DriveTrain driveTrain;
+    public static Climber climber = new Climber();
+    public static Grabber grabber = new Grabber();
+    public static Elevator elevator = new Elevator();
+    public static Ejector ejector = new Ejector();
+    public static DriveTrain driveTrain = new DriveTrain();
 
     public static OI oi;
     
@@ -26,22 +26,6 @@ public class Robot extends IterativeRobot {
         oi = new OI();
     }
 
-    public Climber getClimber() {
-        return climber;
-    }
-    public Grabber getGrabber() {
-        return grabber;
-    }
-    public Elevator getElevator() {
-        return elevator;
-    }
-    public Ejector getEjector() {
-        return ejector;
-    }
-    public DriveTrain getDriveTrain() {
-        return driveTrain;
-    }
-
     @Override
     public void disabledInit() { // runs once before disabledPeriodic after the robot is disabled
 
@@ -54,18 +38,6 @@ public class Robot extends IterativeRobot {
 
     @Override
     public void autonomousInit() { // runs once before autonomousPeriodic after autonomous mode is started
-        //autonomousCommand = new StraightAuto();
-
-        /*
-         * String autoSelected = SmartDashboard.getString("Auto Selector",
-         * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-         * = new MyAutoCommand(); break; case "Default Auto": default:
-         * autonomousCommand = new ExampleCommand(); break; }
-         */
-
-        // schedule the autonomous command (example)
-        //if (autonomousCommand != null)
-        //    autonomousCommand.start();
     }
 
     @Override
@@ -76,12 +48,6 @@ public class Robot extends IterativeRobot {
     @Override
     public void teleopInit() {
         // runs once before teleopPeriodic after teleop mode is started
-        // This makes sure that the autonomous stops running when
-        // teleop starts running. If you want the autonomous to
-        // continue until interrupted by another command, remove
-        // this line or comment it out.
-        //if (autonomousCommand != null)
-        //    autonomousCommand.cancel();
         driveTrain.resetPos();
         driveTrain.setManual();
     }

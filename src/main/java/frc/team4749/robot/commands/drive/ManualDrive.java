@@ -15,7 +15,15 @@ public class ManualDrive extends Command {
     }
 
     protected void execute() {
-        Robot.driveTrain.manualDrive();
+        Robot.driveTrain.manualDrive(Robot.oi.getController());
+    }
+
+    protected void end() {
+        Robot.driveTrain.stop();
+    }
+
+    protected void interrupted() {
+        end();
     }
 
     protected boolean isFinished() {

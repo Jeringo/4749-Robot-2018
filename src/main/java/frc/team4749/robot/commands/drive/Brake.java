@@ -10,10 +10,11 @@ public class Brake extends Command {
     }
 
     protected void initialize(){
-        Robot.driveTrain.stop();
+        Robot.driveTrain.setBrake();
     }
 
     protected void end(){
+        Robot.driveTrain.setCoast();
     }
 
     @Override

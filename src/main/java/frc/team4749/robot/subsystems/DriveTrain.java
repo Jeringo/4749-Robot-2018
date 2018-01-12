@@ -1,5 +1,6 @@
 package frc.team4749.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -11,10 +12,8 @@ import frc.team4749.robot.commands.drive.ManualDrive;
 
 public class DriveTrain extends Subsystem implements RobotMap {
 
-    private static DriveTrain instance;
     private WPI_TalonSRX frontLeft, frontRight, backLeft, backRight;
     private MecanumDrive robotDrive;
-    private Controller controller;
     private double speedModifier;
 
     public DriveTrain(){
@@ -25,7 +24,6 @@ public class DriveTrain extends Subsystem implements RobotMap {
 
         robotDrive = new MecanumDrive(frontLeft, backLeft, frontRight, backRight);
 
-        controller = OI.getInstance().getController();
         speedModifier = DRIVE_SPEED;
         setManual();
     }
@@ -41,8 +39,22 @@ public class DriveTrain extends Subsystem implements RobotMap {
         System.out.println("DriveTrain set to manual" );
     }
 
+    public void setBrake(){
+        frontLeft.setNeutralMode(NeutralMode.Brake);
+        frontRight.setNeutralMode(NeutralMode.Brake);
+        backLeft.setNeutralMode(NeutralMode.Brake);
+        backRight.setNeutralMode(NeutralMode.Brake);
+    }
+
+    public void setCoast(){
+        frontLeft.setNeutralMode(NeutralMode.Coast);
+        frontRight.setNeutralMode(NeutralMode.Coast);
+        backLeft.setNeutralMode(NeutralMode.Coast);
+        backRight.setNeutralMode(NeutralMode.Coast);
+    }
+
     // Basic Teleop Functions
-    public void manualDrive(){
+    public void manualDrive(Controller controller){
         robotDrive.driveCartesian((controller.getLX() * speedModifier), (controller.getLY() * speedModifier),(controller.getRudder() * speedModifier), 0.0);
     }
 
