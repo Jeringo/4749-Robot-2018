@@ -6,7 +6,7 @@ import frc.team4749.robot.Robot;
 public class Eject extends Command {
 
     public Eject(){
-        requires(Robot.ejector);
+        //requires(Robot.ejector);
     }
 
     protected void initialize(){

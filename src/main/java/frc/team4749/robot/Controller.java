@@ -23,23 +23,23 @@ public class Controller extends Joystick {
      */
 
     public double getLX(){
-        return Math.pow(super.getRawAxis(1), 2);
+        return Math.pow(super.getRawAxis(0), 3);
     }
     public double getLY(){
-        return Math.pow(super.getRawAxis(2), 2);
+        return Math.pow(super.getRawAxis(1), 3);
     }
     public double getRX(){
-        return Math.pow(super.getRawAxis(4), 2);
+        return Math.pow(super.getRawAxis(4), 3);
     }
     public double getRY(){
-        return Math.pow(super.getRawAxis(5), 2);
+        return Math.pow(super.getRawAxis(5), 3);
     }
 
     public double getRT(){
-        return Math.pow(super.getRawAxis(0), 2);
+        return Math.pow(super.getRawAxis(0), 3);
     }
     public double getLT(){
-        return Math.pow(super.getRawAxis(1), 2);
+        return Math.pow(super.getRawAxis(1), 3);
     }
 
     public double getRudder(){

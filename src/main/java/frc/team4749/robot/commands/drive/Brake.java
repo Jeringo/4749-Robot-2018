@@ -6,7 +6,7 @@ import frc.team4749.robot.Robot;
 public class Brake extends Command {
 
     public Brake(){
-        requires(Robot.driveTrain);
+        //requires(Robot.driveTrain);
     }
 
     protected void initialize(){

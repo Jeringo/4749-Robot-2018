@@ -55,7 +55,7 @@ public class DriveTrain extends Subsystem implements RobotMap {
 
     // Basic Teleop Functions
     public void manualDrive(Controller controller){
-        robotDrive.driveCartesian((controller.getLX() * speedModifier), (controller.getLY() * speedModifier),(controller.getRudder() * speedModifier), 0.0);
+        robotDrive.driveCartesian((controller.getLX() * speedModifier), (controller.getLY() * speedModifier),(controller.getRudder() * speedModifier));
     }
 
     public void setSpeed(double val){

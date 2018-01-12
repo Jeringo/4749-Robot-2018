@@ -9,7 +9,7 @@ package frc.team4749.robot;
 public interface RobotMap {
 
     //Driver Station
-    int MAIN_CONTROLLER = 1;
+    int MAIN_CONTROLLER = 0;
 
     //Controller Buttons
     int BRAKE_BUTTON = 2;
@@ -20,10 +20,10 @@ public interface RobotMap {
     int EJECT_BUTTON = 1;
 
     //CanTalonSRX
-    int DT_FRONTLEFT = 1;
-    int DT_FRONTRIGHT = 2;
-    int DT_BACKLEFT = 3;
-    int DT_BACKRIGHT = 4;
+    int DT_FRONTLEFT = 4;
+    int DT_FRONTRIGHT = 3;
+    int DT_BACKLEFT = 2;
+    int DT_BACKRIGHT = 1;
     int CLIMBER = 10;
     int ELEVATOR = 11;
     int GRABBER = 12;

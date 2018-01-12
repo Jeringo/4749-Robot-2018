@@ -30,11 +30,11 @@ public class OI implements RobotMap {
 
     private void createButtons(){
         //Create Buttons for main controller
-        brake = new JoystickButton(mainController,BRAKE_BUTTON);
         climb = new JoystickButton(mainController,CLIMB_BUTTON);
         grab = new JoystickButton(mainController,GRAB_BUTTON);
         release = new JoystickButton(mainController,RELEASE_BUTTON);
         eject = new JoystickButton(mainController,EJECT_BUTTON);
+        brake = new JoystickButton(mainController,BRAKE_BUTTON);
         slow = new JoystickButton(mainController,SLOW_BUTTON);
 
         assignButtons();

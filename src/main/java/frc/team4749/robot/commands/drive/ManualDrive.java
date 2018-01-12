@@ -1,6 +1,7 @@
 package frc.team4749.robot.commands.drive;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team4749.robot.Robot;
 
 public class ManualDrive extends Command {
@@ -15,6 +16,9 @@ public class ManualDrive extends Command {
     }
 
     protected void execute() {
+
+        SmartDashboard.putNumber("Joystick X value", Robot.oi.getController().getLX());
+        SmartDashboard.putNumber("Joystick Y value", Robot.oi.getController().getLY());
         Robot.driveTrain.manualDrive(Robot.oi.getController());
     }
 

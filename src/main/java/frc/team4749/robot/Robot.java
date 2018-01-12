@@ -3,6 +3,7 @@ package frc.team4749.robot;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team4749.robot.subsystems.*;
 
 public class Robot extends IterativeRobot {
@@ -13,17 +14,10 @@ public class Robot extends IterativeRobot {
     public static Ejector ejector = new Ejector();
     public static DriveTrain driveTrain = new DriveTrain();
 
-    public static OI oi;
+    public static OI oi = new OI();
     
     @Override
     public void robotInit() { // runs once before robotPeriodic when the robot is turned on
-        climber = new Climber();
-        grabber = new Grabber();
-        elevator = new Elevator();
-        ejector = new Ejector();
-        driveTrain = new DriveTrain();
-
-        oi = new OI();
     }
 
     @Override

@@ -7,7 +7,7 @@ import frc.team4749.robot.RobotMap;
 public class SlowDrive extends Command {
 
     public SlowDrive(){
-        requires(Robot.driveTrain);
+        //requires(Robot.driveTrain);
     }
 
     protected void initialize(){
