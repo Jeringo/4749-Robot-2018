@@ -14,15 +14,7 @@ public class Elevator extends Subsystem implements RobotMap {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-    public static Elevator getInstance()
-    {
-        if (instance == null)
-        {
-            instance = new Elevator();
-        }
-        return instance;
-    }
-    private Elevator()
+    public Elevator()
     {
         elevator = new WPI_TalonSRX(ELEVATOR);
 

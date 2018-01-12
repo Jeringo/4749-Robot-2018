@@ -11,15 +11,7 @@ public class Ejector extends Subsystem implements RobotMap {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-    public static Ejector getInstance()
-    {
-        if (instance == null)
-        {
-            instance = new Ejector();
-        }
-        return instance;
-    }
-    private Ejector()
+    public Ejector()
     {
         pusher = new WPI_TalonSRX(EJECTOR);
 

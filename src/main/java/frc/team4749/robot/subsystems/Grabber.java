@@ -11,15 +11,7 @@ public class Grabber extends Subsystem implements RobotMap {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-    public static Grabber getInstance()
-    {
-        if (instance == null)
-        {
-            instance = new Grabber();
-        }
-        return instance;
-    }
-    private Grabber()
+    public Grabber()
     {
         grabber = new WPI_TalonSRX(GRABBER);
 

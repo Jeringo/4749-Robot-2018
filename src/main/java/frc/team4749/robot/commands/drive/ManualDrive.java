@@ -6,16 +6,16 @@ import frc.team4749.robot.Robot;
 public class ManualDrive extends Command {
 
     public ManualDrive(){
-        requires(Robot.dt);
+        requires(Robot.driveTrain);
     }
 
     protected void initialize() {
-        Robot.dt.setManual();
+        Robot.driveTrain.setManual();
         System.out.println("DT set to regular speed");
     }
 
     protected void execute() {
-        Robot.dt.manualDrive();
+        Robot.driveTrain.manualDrive();
     }
 
     protected boolean isFinished() {

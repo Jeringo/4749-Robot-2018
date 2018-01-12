@@ -15,15 +15,9 @@ public class DriveTrain extends Subsystem implements RobotMap {
     private WPI_TalonSRX frontLeft, frontRight, backLeft, backRight;
     private MecanumDrive robotDrive;
     private Controller controller;
+    private double speedModifier;
 
-    public static DriveTrain getInstance(){
-        if (instance == null){
-            instance = new DriveTrain();
-        }
-        return instance;
-    }
-
-    private DriveTrain(){
+    public DriveTrain(){
         frontLeft  = new WPI_TalonSRX(DT_FRONTLEFT);
         backLeft = new WPI_TalonSRX(DT_BACKLEFT);
         frontRight = new WPI_TalonSRX(DT_FRONTRIGHT);
@@ -32,6 +26,7 @@ public class DriveTrain extends Subsystem implements RobotMap {
         robotDrive = new MecanumDrive(frontLeft, backLeft, frontRight, backRight);
 
         controller = OI.getInstance().getController();
+        speedModifier = DRIVE_SPEED;
         setManual();
     }
 
@@ -48,9 +43,12 @@ public class DriveTrain extends Subsystem implements RobotMap {
 
     // Basic Teleop Functions
     public void manualDrive(){
-        robotDrive.driveCartesian(controller.getLX(), controller.getLY(), controller.getRudder(), 0.0);
+        robotDrive.driveCartesian((controller.getLX() * speedModifier), (controller.getLY() * speedModifier),(controller.getRudder() * speedModifier), 0.0);
     }
 
+    public void setSpeed(double val){
+        speedModifier = val;
+    }
     // Support functions
     public void stop() { // this stops the robot from moving
         robotDrive.driveCartesian(0.0, 0.0, 0.0, 0.0);

@@ -2,29 +2,44 @@ package frc.team4749.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.team4749.robot.subsystems.*;
 
 public class Robot extends IterativeRobot {
 
-
-    public static OI oi;
     public static Climber climber;
     public static Grabber grabber;
     public static Elevator elevator;
     public static Ejector ejector;
-    public static DriveTrain dt;
+    public static DriveTrain driveTrain;
 
+    public static OI oi;
+    
     @Override
     public void robotInit() { // runs once before robotPeriodic when the robot is turned on
-        climber = Climber.getInstance();
-        grabber = Grabber.getInstance();
-        elevator = Elevator.getInstance();
-        ejector = Ejector.getInstance();
-        dt = DriveTrain.getInstance();
+        climber = new Climber();
+        grabber = new Grabber();
+        elevator = new Elevator();
+        ejector = new Ejector();
+        driveTrain = new DriveTrain();
 
-        oi = OI.getInstance();
+        oi = new OI();
+    }
 
-        // chooser.addObject("My Auto", new MyAutoCommand());
+    public Climber getClimber() {
+        return climber;
+    }
+    public Grabber getGrabber() {
+        return grabber;
+    }
+    public Elevator getElevator() {
+        return elevator;
+    }
+    public Ejector getEjector() {
+        return ejector;
+    }
+    public DriveTrain getDriveTrain() {
+        return driveTrain;
     }
 
     @Override
@@ -67,8 +82,8 @@ public class Robot extends IterativeRobot {
         // this line or comment it out.
         //if (autonomousCommand != null)
         //    autonomousCommand.cancel();
-        dt.resetPos();
-        dt.setManual();
+        driveTrain.resetPos();
+        driveTrain.setManual();
     }
 
     @Override
