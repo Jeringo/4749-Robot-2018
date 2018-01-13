@@ -36,16 +36,16 @@ public class Controller extends Joystick {
     }
 
     public double getRT(){
-        return Math.pow(super.getRawAxis(0), 3);
+        return Math.pow(super.getRawAxis(2), 3);
     }
     public double getLT(){
-        return Math.pow(super.getRawAxis(1), 3);
+        return Math.pow(super.getRawAxis(3), 3);
     }
 
     public double getRudder(){
     // combines the left and right trigger into one so that is can act as a rudder for rotating the robot
-        double rightTrigger = super.getRawAxis(0);
-        double leftTrigger = (super.getRawAxis(1) * -1);
+        double rightTrigger = super.getRawAxis(2);
+        double leftTrigger = (super.getRawAxis(3) * -1);
         double combinedAxis = rightTrigger + leftTrigger;
 
         return Math.pow(combinedAxis, 2);
