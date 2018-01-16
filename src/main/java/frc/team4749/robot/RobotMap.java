@@ -47,7 +47,7 @@ public interface RobotMap {
     double RESET_MODIFIER = -1.0;
 
     //Drive variables
-    double DRIVE_SPEED = 1.0;
+    double DRIVE_SPEED = 0.7;
     double DRIVE_SLOW = 0.5;
 
 }

@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.team4749.robot.commands.drive.AutoSpin;
 import frc.team4749.robot.subsystems.*;
 
 public class Robot extends IterativeRobot {
@@ -15,6 +16,8 @@ public class Robot extends IterativeRobot {
     public static DriveTrain driveTrain = new DriveTrain();
 
     public static OI oi = new OI();
+
+    private boolean toggle = true;
     
     @Override
     public void robotInit() { // runs once before robotPeriodic when the robot is turned on
@@ -32,11 +35,18 @@ public class Robot extends IterativeRobot {
 
     @Override
     public void autonomousInit() { // runs once before autonomousPeriodic after autonomous mode is started
+        new AutoSpin();
     }
 
     @Override
     public void autonomousPeriodic() { // runs is a loop while the robot is in autonomous mode
         Scheduler.getInstance().run();
+        if(toggle){
+            Robot.driveTrain.autoSpin(1);
+        }else{
+            Robot.driveTrain.autoSpin(-1);
+        }
+        toggle = (!toggle);
     }
 
     @Override

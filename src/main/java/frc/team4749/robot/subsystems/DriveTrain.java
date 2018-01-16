@@ -53,9 +53,14 @@ public class DriveTrain extends Subsystem implements RobotMap {
         backRight.setNeutralMode(NeutralMode.Coast);
     }
 
+    // Auto Functions
+    public void autoSpin(double speed){
+        robotDrive.driveCartesian(0.0, 0.0, speed);
+    }
+
     // Basic Teleop Functions
     public void manualDrive(Controller controller){
-        robotDrive.driveCartesian((controller.getRX() * speedModifier), (controller.getRY() * speedModifier),(controller.getRudder() * speedModifier));
+        robotDrive.driveCartesian((controller.getLX() * speedModifier * -1), (controller.getLY() * speedModifier),(controller.getRudder() * speedModifier));
     }
 
     public void setSpeed(double val){
