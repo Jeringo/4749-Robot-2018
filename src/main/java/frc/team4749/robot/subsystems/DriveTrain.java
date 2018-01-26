@@ -22,6 +22,11 @@ public class DriveTrain extends Subsystem implements RobotMap {
         frontRight = new WPI_TalonSRX(DT_FRONTRIGHT);
         backRight = new WPI_TalonSRX(DT_BACKRIGHT);
 
+        frontLeft.setInverted(true);
+        backLeft.setInverted(true);
+        frontRight.setInverted(true);
+        backRight.setInverted(true);
+
         robotDrive = new MecanumDrive(frontLeft, backLeft, frontRight, backRight);
 
         speedModifier = DRIVE_SPEED;

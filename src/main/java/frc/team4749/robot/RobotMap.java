@@ -20,10 +20,10 @@ public interface RobotMap {
     int EJECT_BUTTON = 1;
 
     //CanTalonSRX
-    int DT_FRONTLEFT = 4;
-    int DT_FRONTRIGHT = 3;
-    int DT_BACKLEFT = 2;
-    int DT_BACKRIGHT = 1;
+    int DT_FRONTLEFT = 1;
+    int DT_FRONTRIGHT = 2;
+    int DT_BACKLEFT = 3;
+    int DT_BACKRIGHT = 4;
     int CLIMBER = 10;
     int ELEVATOR = 11;
     int GRABBER = 12;
@@ -47,7 +47,7 @@ public interface RobotMap {
     double RESET_MODIFIER = -1.0;
 
     //Drive variables
-    double DRIVE_SPEED = 0.7;
-    double DRIVE_SLOW = 0.5;
+    double DRIVE_SPEED = 0.5;
+    double DRIVE_SLOW = 0.2;
 
 }
