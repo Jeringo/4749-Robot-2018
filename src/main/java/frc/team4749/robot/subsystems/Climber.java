@@ -12,15 +12,7 @@ public class Climber extends Subsystem implements RobotMap {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-    public static Climber getInstance()
-    {
-        if (instance == null)
-        {
-            instance = new Climber();
-        }
-        return instance;
-    }
-    private Climber()
+    public Climber()
     {
         climber = new WPI_TalonSRX(CLIMBER);
         // TODO - make this motor controller brake instead of coast

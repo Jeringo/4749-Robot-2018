@@ -7,7 +7,7 @@ import frc.team4749.robot.Robot;
 public class Climb extends Command {
 
     public Climb(){
-        requires(Robot.climber);
+        //requires(Robot.climber);
     }
 
     protected void initialize(){

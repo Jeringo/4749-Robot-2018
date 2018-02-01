@@ -2,29 +2,25 @@ package frc.team4749.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.team4749.robot.commands.drive.AutoSpin;
 import frc.team4749.robot.subsystems.*;
 
 public class Robot extends IterativeRobot {
 
+    public static Climber climber = new Climber();
+    public static Grabber grabber = new Grabber();
+    public static Elevator elevator = new Elevator();
+    public static Ejector ejector = new Ejector();
+    public static DriveTrain driveTrain = new DriveTrain();
 
-    public static OI oi;
-    public static Climber climber;
-    public static Grabber grabber;
-    public static Elevator elevator;
-    public static Ejector ejector;
-    public static DriveTrain dt;
+    public static OI oi = new OI();
 
+    private boolean toggle = true;
+    
     @Override
     public void robotInit() { // runs once before robotPeriodic when the robot is turned on
-        climber = Climber.getInstance();
-        grabber = Grabber.getInstance();
-        elevator = Elevator.getInstance();
-        ejector = Ejector.getInstance();
-        dt = DriveTrain.getInstance();
-
-        oi = OI.getInstance();
-
-        // chooser.addObject("My Auto", new MyAutoCommand());
     }
 
     @Override
@@ -39,36 +35,25 @@ public class Robot extends IterativeRobot {
 
     @Override
     public void autonomousInit() { // runs once before autonomousPeriodic after autonomous mode is started
-        //autonomousCommand = new StraightAuto();
-
-        /*
-         * String autoSelected = SmartDashboard.getString("Auto Selector",
-         * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-         * = new MyAutoCommand(); break; case "Default Auto": default:
-         * autonomousCommand = new ExampleCommand(); break; }
-         */
-
-        // schedule the autonomous command (example)
-        //if (autonomousCommand != null)
-        //    autonomousCommand.start();
+        new AutoSpin();
     }
 
     @Override
     public void autonomousPeriodic() { // runs is a loop while the robot is in autonomous mode
         Scheduler.getInstance().run();
+        if(toggle){
+            Robot.driveTrain.autoSpin(1);
+        }else{
+            Robot.driveTrain.autoSpin(-1);
+        }
+        toggle = (!toggle);
     }
 
     @Override
     public void teleopInit() {
         // runs once before teleopPeriodic after teleop mode is started
-        // This makes sure that the autonomous stops running when
-        // teleop starts running. If you want the autonomous to
-        // continue until interrupted by another command, remove
-        // this line or comment it out.
-        //if (autonomousCommand != null)
-        //    autonomousCommand.cancel();
-        dt.resetPos();
-        dt.setManual();
+        driveTrain.resetPos();
+        driveTrain.setManual();
     }
 
     @Override

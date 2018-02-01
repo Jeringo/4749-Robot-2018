@@ -1,21 +1,33 @@
 package frc.team4749.robot.commands.drive;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team4749.robot.Robot;
 
 public class ManualDrive extends Command {
 
     public ManualDrive(){
-        requires(Robot.dt);
+        requires(Robot.driveTrain);
     }
 
     protected void initialize() {
-        Robot.dt.setManual();
+        Robot.driveTrain.setManual();
         System.out.println("DT set to regular speed");
     }
 
     protected void execute() {
-        Robot.dt.manualDrive();
+
+        SmartDashboard.putNumber("Joystick X value", Robot.oi.getController().getLX());
+        SmartDashboard.putNumber("Joystick Y value", Robot.oi.getController().getLY());
+        Robot.driveTrain.manualDrive(Robot.oi.getController());
+    }
+
+    protected void end() {
+        Robot.driveTrain.stop();
+    }
+
+    protected void interrupted() {
+        end();
     }
 
     protected boolean isFinished() {

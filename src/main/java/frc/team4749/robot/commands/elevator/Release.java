@@ -6,7 +6,7 @@ import frc.team4749.robot.Robot;
 public class Release extends Command {
 
     public Release(){
-        requires(Robot.grabber);
+        //requires(Robot.grabber);
     }
 
     protected void initialize(){

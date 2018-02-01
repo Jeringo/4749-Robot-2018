@@ -5,28 +5,18 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.team4749.robot.Controller;
 import frc.team4749.robot.OI;
 import frc.team4749.robot.RobotMap;
+import frc.team4749.robot.commands.elevator.ManualElevator;
 
 public class Elevator extends Subsystem implements RobotMap {
 
     private static Elevator instance;
     private WPI_TalonSRX elevator;
-    private Controller controller;
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-    public static Elevator getInstance()
-    {
-        if (instance == null)
-        {
-            instance = new Elevator();
-        }
-        return instance;
-    }
-    private Elevator()
+    public Elevator()
     {
         elevator = new WPI_TalonSRX(ELEVATOR);
-
-        controller = OI.getInstance().getController();
         // TODO - make this motor controller brake instead of coast
     }
 
@@ -43,7 +33,7 @@ public class Elevator extends Subsystem implements RobotMap {
 
 
     // Basic Teleop Functions
-    public void manualControl(){
+    public void manualControl(Controller controller){
         double rightYAxis = controller.getRY();
         rightYAxis = (rightYAxis < 0) ? rightYAxis * LOWER_MODIFIER : rightYAxis;
         rightYAxis = rightYAxis * ELEVATOR_SPEED;
@@ -61,7 +51,7 @@ public class Elevator extends Subsystem implements RobotMap {
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new ManualElevator());
     }
 
 }
