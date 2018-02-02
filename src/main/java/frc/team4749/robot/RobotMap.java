@@ -14,7 +14,7 @@ public interface RobotMap {
     //Controller Buttons
     int BRAKE_BUTTON = 2;
     int CLIMB_BUTTON = 4;
-    int SLOW_BUTTON = 3;
+    int FAST_BUTTON = 3;
     int GRAB_BUTTON = 6;
     int RELEASE_BUTTON = 5;
     int EJECT_BUTTON = 1;
@@ -48,6 +48,7 @@ public interface RobotMap {
 
     //Drive variables
     double DRIVE_SPEED = 0.5;
-    double DRIVE_SLOW = 0.2;
+    double FAST_MODIFIER = 1.0;
+    double ROTATE_SPEED = 0.5;
 
 }
