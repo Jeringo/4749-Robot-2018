@@ -18,6 +18,7 @@ public class Elevator extends Subsystem implements RobotMap {
     {
         elevator = new WPI_TalonSRX(ELEVATOR);
         // TODO - make this motor controller brake instead of coast
+
     }
 
     //Talon Mode change functions

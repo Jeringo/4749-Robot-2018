@@ -1,6 +1,10 @@
 package frc.team4749.robot;
 
+import edu.wpi.cscore.AxisCamera;
+import edu.wpi.cscore.CvSink;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team4749.robot.commands.drive.FastDrive;
 import frc.team4749.robot.commands.elevator.Grab;
 import frc.team4749.robot.commands.elevator.Eject;
@@ -14,6 +18,8 @@ public class OI implements RobotMap {
     private Controller mainController;
     private JoystickButton brake, climb, grab, release, eject, fast;
 
+    private Thread m_visionThread;
+
     public static OI getInstance()
     {
         if (instance == null){
@@ -26,6 +32,21 @@ public class OI implements RobotMap {
         mainController = new Controller(MAIN_CONTROLLER);
 
         createButtons();
+        dashboardInit();
+    }
+
+    private void dashboardInit(){
+        m_visionThread = new Thread(() -> {
+            // Get the Axis camera from CameraServer
+            AxisCamera camera = CameraServer.getInstance().addAxisCamera("axis-camera.local");
+
+            // Get a CvSink. This will capture Mats from the camera
+            CvSink cvSink = CameraServer.getInstance().getVideo();
+        });
+        m_visionThread.setDaemon(true);
+        m_visionThread.start();
+
+        SmartDashboard::PutData("Set Minimum height", new );
     }
 
     private void createButtons(){
