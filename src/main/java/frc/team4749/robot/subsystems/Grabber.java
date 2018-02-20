@@ -18,11 +18,11 @@ public class Grabber extends Subsystem implements RobotMap {
         // TODO - make this motor controller brake instead of coast
     }
 
-    public void grab(){
+    public void intake(){
         grabber.set(GRABBER_SPEED);
     }
 
-    public void release(){
+    public void eject(){
         grabber.set(GRABBER_SPEED * RELEASE_MODIFIER);
     }
 

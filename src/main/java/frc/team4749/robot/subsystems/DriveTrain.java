@@ -2,6 +2,7 @@ package frc.team4749.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
@@ -44,6 +45,10 @@ public class DriveTrain extends Subsystem implements RobotMap {
         System.out.println("DriveTrain set to manual" );
     }
 
+    public void setSaftey(boolean state){
+        robotDrive.setSafetyEnabled(state);
+    }
+
     public void setBrake(){
         frontLeft.setNeutralMode(NeutralMode.Brake);
         frontRight.setNeutralMode(NeutralMode.Brake);
@@ -59,8 +64,36 @@ public class DriveTrain extends Subsystem implements RobotMap {
     }
 
     // Auto Functions
-    public void autoSpin(double speed){
-        robotDrive.driveCartesian(0.0, 0.0, speed);
+    public void autoForward(double time){
+        robotDrive.driveCartesian(0.0, AUTO_SPEED,0.0);
+
+        Timer.delay(time);
+        this.stop();
+    }
+    public void autoBackward(double time){
+        robotDrive.driveCartesian(0.0, AUTO_SPEED * -1, 0.0);
+        Timer.delay(time);
+        this.stop();
+    }
+    public void autoLeft(double time){
+        robotDrive.driveCartesian(AUTO_SPEED * 2 * -1, 0.0,  0.0);
+        Timer.delay(time);
+        this.stop();
+    }
+    public void autoRight(double time){
+        robotDrive.driveCartesian(AUTO_SPEED * 2, 0.0, 0.0);
+        Timer.delay(time);
+        this.stop();
+    }
+    public void autoRotateL(double time){
+        robotDrive.driveCartesian(0.0, 0.0, AUTO_SPEED * -1);
+        Timer.delay(time);
+        this.stop();
+    }
+    public void autoRotateR(double time){
+        robotDrive.driveCartesian(0.0, 0.0, AUTO_SPEED);
+        Timer.delay(time);
+        this.stop();
     }
 
     // Basic Teleop Functions

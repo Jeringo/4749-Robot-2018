@@ -6,15 +6,15 @@ import frc.team4749.robot.Robot;
 public class Eject extends Command {
 
     public Eject(){
-        //requires(Robot.ejector);
+        //requires(Robot.grabber);
     }
 
     protected void initialize(){
-        Robot.ejector.eject();
+        Robot.grabber.eject();
     }
 
     protected void end(){
-        Robot.ejector.reset();
+        Robot.grabber.stop();
     }
 
     @Override
