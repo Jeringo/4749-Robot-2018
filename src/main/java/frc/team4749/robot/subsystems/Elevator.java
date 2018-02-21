@@ -23,6 +23,13 @@ public class Elevator extends Subsystem implements RobotMap {
         elevator = new WPI_TalonSRX(ELEVATOR);
         // TODO - make this motor controller brake instead of coast
         elevator.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
+
+        this.close();
+        elevator.setSelectedSensorPosition(19500,0,0);
+        elevator.configForwardSoftLimitEnable(true, 0);
+        elevator.configReverseSoftLimitEnable(true, 0);
+        elevator.configForwardSoftLimitThreshold(19500, 0);
+        elevator.configReverseSoftLimitThreshold(0, 0);
     }
 
     //Talon Mode change functions
@@ -65,8 +72,30 @@ public class Elevator extends Subsystem implements RobotMap {
         elevator.set(0);
     }
 
-    public double getEncoderPosition(){
+    public int getEncoderPosition(){
         return elevator.getSelectedSensorPosition(0);
+    }
+
+    public void setMax(){
+        elevator.configForwardSoftLimitThreshold(this.getEncoderPosition(),0);
+    }
+
+    public void setMin(){
+        elevator.configReverseSoftLimitThreshold(this.getEncoderPosition(), 0);
+    }
+
+    public void reset(){
+        elevator.setSelectedSensorPosition(0,0,0);
+    }
+
+    public void open(){
+        elevator.configForwardSoftLimitEnable(false, 0);
+        elevator.configReverseSoftLimitEnable(false, 0);
+    }
+
+    public void close(){
+        elevator.configForwardSoftLimitEnable(true, 0);
+        elevator.configReverseSoftLimitEnable(true, 0);
     }
 
     public void resetPos() {

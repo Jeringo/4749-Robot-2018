@@ -37,7 +37,7 @@ public interface RobotMap {
     double AUTO_LOWER_SPEED = -0.2;
 
     //Controls the Grabber speeds
-    double GRABBER_SPEED = 0.5;
+    double GRABBER_SPEED = 0.35;
     double RELEASE_MODIFIER = -1.0;
 
     //Drive variables

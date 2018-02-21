@@ -6,8 +6,7 @@ import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team4749.robot.commands.drive.FastDrive;
-import frc.team4749.robot.commands.elevator.Intake;
-import frc.team4749.robot.commands.elevator.Eject;
+import frc.team4749.robot.commands.elevator.*;
 import frc.team4749.robot.commands.drive.Brake;
 import frc.team4749.robot.commands.climb.Climb;
 
@@ -45,7 +44,10 @@ public class OI implements RobotMap {
         m_visionThread.setDaemon(true);
         m_visionThread.start();
 
-        //SmartDashboard::PutData("Set Minimum height", new );
+        SmartDashboard.putData("Set Minimum height", new SetMin());
+        SmartDashboard.putData("Set Maximum height", new SetMax());
+        SmartDashboard.putData("Reset height", new Reset());
+        SmartDashboard.putData("Open Limits", new Open());
     }
 
     private void createButtons(){
