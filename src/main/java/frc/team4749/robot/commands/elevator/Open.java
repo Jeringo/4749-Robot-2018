@@ -3,18 +3,18 @@ package frc.team4749.robot.commands.elevator;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.team4749.robot.Robot;
 
-public class Grab extends Command {
+public class Open extends Command {
 
-    public Grab(){
+    public Open(){
         //requires(Robot.grabber);
     }
 
     protected void initialize(){
-        Robot.grabber.grab();
+        Robot.elevator.open();
     }
 
     protected void end(){
-        Robot.grabber.stop();
+        Robot.elevator.close();
     }
 
     @Override

@@ -15,9 +15,8 @@ public interface RobotMap {
     int BRAKE_BUTTON = 2;
     int CLIMB_BUTTON = 4;
     int FAST_BUTTON = 3;
-    int GRAB_BUTTON = 6;
-    int RELEASE_BUTTON = 5;
-    int EJECT_BUTTON = 1;
+    int INTAKE_BUTTON = 6;
+    int EJECT_BUTTON = 5;
 
     //CanTalonSRX
     int DT_FRONTLEFT = 1;
@@ -27,28 +26,24 @@ public interface RobotMap {
     int CLIMBER = 10;
     int ELEVATOR = 11;
     int GRABBER = 12;
-    int EJECTOR = 13;
 
     //Scales down Climber speed
     double CLIMBER_SPEED = 1.0;
 
     //Controls the elevator speeds
-    double ELEVATOR_SPEED = 1.0;
-    double LOWER_MODIFIER = 0.5;
+    double ELEVATOR_SPEED = -1.0;
+    double LOWER_MODIFIER = 0.8;
     double AUTO_RAISE_SPEED = 0.8;
     double AUTO_LOWER_SPEED = -0.2;
 
     //Controls the Grabber speeds
-    double GRABBER_SPEED = 1.0;
+    double GRABBER_SPEED = 0.35;
     double RELEASE_MODIFIER = -1.0;
 
-    //Controls the Ejector speeds
-    double EJECTOR_SPEED = 1.0;
-    double RESET_MODIFIER = -1.0;
-
     //Drive variables
-    double DRIVE_SPEED = 0.5;
+    double DRIVE_SPEED = 0.8;
     double FAST_MODIFIER = 1.0;
     double ROTATE_SPEED = 0.5;
+    double AUTO_SPEED = -0.2;
 
 }

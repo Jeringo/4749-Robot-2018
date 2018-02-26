@@ -16,9 +16,6 @@ public class ManualDrive extends Command {
     }
 
     protected void execute() {
-
-        SmartDashboard.putNumber("Joystick X value", Robot.oi.getController().getLX());
-        SmartDashboard.putNumber("Joystick Y value", Robot.oi.getController().getLY());
         Robot.driveTrain.manualDrive(Robot.oi.getController());
     }
 
