@@ -25,11 +25,11 @@ public class Elevator extends Subsystem implements RobotMap {
         elevator.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
 
         this.close();
-        elevator.setSelectedSensorPosition(19500,0,0);
+        elevator.setSelectedSensorPosition(0,0,0);
         elevator.configForwardSoftLimitEnable(true, 0);
         elevator.configReverseSoftLimitEnable(true, 0);
-        elevator.configForwardSoftLimitThreshold(19500, 0);
-        elevator.configReverseSoftLimitThreshold(0, 0);
+        elevator.configForwardSoftLimitThreshold(100, 0);
+        elevator.configReverseSoftLimitThreshold(-20900, 0);
     }
 
     //Talon Mode change functions

@@ -59,20 +59,24 @@ public class Robot extends IterativeRobot {
 
         switch (autoSelected) {
             case left:
-                driveTrain.autoForward(8.5);
+                grabber.intake();
+                driveTrain.autoForward(6.5);
                 driveTrain.autoRotateR(4.0);
                 driveTrain.autoForward(4.0);
+                grabber.eject();
                 break;
             case right:
-                driveTrain.autoForward(8.5);
+                grabber.intake();
+                driveTrain.autoForward(6.5);
                 driveTrain.autoRotateL(4.0);
                 driveTrain.autoForward(4.0);
+                grabber.eject();
                 break;
             case nothing:
                 break;
             case forward:
             default:
-                driveTrain.autoForward(2.0);
+                driveTrain.autoForward(4.0);
                 break;
         }
     }
