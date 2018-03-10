@@ -63,20 +63,22 @@ public class Robot extends IterativeRobot {
                 driveTrain.autoForward(6.5);
                 driveTrain.autoRotateR(4.0);
                 driveTrain.autoForward(4.0);
-                grabber.eject();
+                grabber.stop();
                 break;
             case right:
                 grabber.intake();
                 driveTrain.autoForward(6.5);
                 driveTrain.autoRotateL(4.0);
                 driveTrain.autoForward(4.0);
-                grabber.eject();
+                grabber.stop();
                 break;
             case nothing:
                 break;
             case forward:
             default:
-                driveTrain.autoForward(4.0);
+                //grabber.intake();
+                driveTrain.autoForward(6.0);
+                //grabber.stop();
                 break;
         }
     }

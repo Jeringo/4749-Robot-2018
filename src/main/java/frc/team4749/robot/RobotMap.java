@@ -26,6 +26,7 @@ public interface RobotMap {
     int CLIMBER = 10;
     int ELEVATOR = 11;
     int GRABBER = 12;
+    int GRABBER_2 = 13;
 
     //Scales down Climber speed
     double CLIMBER_SPEED = 1.0;
@@ -39,6 +40,7 @@ public interface RobotMap {
     //Controls the Grabber speeds
     double GRABBER_SPEED = 0.27;
     double RELEASE_MODIFIER = -1.0;
+    int SECONDARY_SPEED = 1;
 
     //Drive variables
     double DRIVE_SPEED = 0.7;
